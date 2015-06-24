@@ -3,7 +3,6 @@ using System.Collections;
 
 public class NeutronShot : MonoBehaviour {
 
-	Vector3 mousePos;
 	Rigidbody rb;
 	public int force;
 
@@ -14,18 +13,17 @@ public class NeutronShot : MonoBehaviour {
 		}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
-		mousePos = Input.mousePosition;            
-		mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-		Quaternion rot = Quaternion.LookRotation(transform.position - mousePos, Vector3.forward );
-		transform.rotation = rot;   
-		transform.eulerAngles = new Vector3(0, 0,transform.eulerAngles.z); 
-		transform.LookAt(mousePos);
+	void Update () {
+	        if (Input.GetMouseButtonDown(0)) {
+			Launch ();
+			}
+	}
 
-		if (Input.GetMouseButtonDown(0)) {
-			rb.AddForce(transform.forward * force);
+	void Launch(){
+		Vector3 mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+		Vector3 dir = new Vector3 (mousePos.x, mousePos.y, transform.position.z) - transform.position;
+		rb.AddForce(force * dir.normalized, ForceMode.Impulse);
 
-		}
 	}
 
 
