@@ -46,7 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Atom.cs" />
+     <Compile Include="Assets\Scripts\BondingChecker.cs" />
      <Compile Include="Assets\Scripts\NeutronShot.cs" />
+     <Compile Include="Assets\Scripts\ProtonBond.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
