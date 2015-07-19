@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Atom : MonoBehaviour {
 
-	// this atom's collider
+	// the atom's colliders for different hit levels
 	public Collider atomColliderOne;
 	public Collider atomColliderTwo;
 
@@ -19,6 +19,12 @@ public class Atom : MonoBehaviour {
 	void OnTriggerEnter(Collider coll){
 		if (coll.gameObject.tag == "Neutron") {
 			atomHitOne = true;
+			StartCoroutine("AtomHitReset");
 		}
+	}
+
+	IEnumerator AtomHitReset(){
+		yield return new WaitForSeconds (0.1f);
+		atomHitOne = false;
 	}
 }

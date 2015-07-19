@@ -49,7 +49,7 @@ public class ProtonBond : MonoBehaviour {
 	void OnTriggerEnter(Collider coll){
 		if (coll.gameObject.tag == "Border") {
 			Destroy(gameObject);
-			Debug.Log ("destroyed");
+
 		}
 	}
 

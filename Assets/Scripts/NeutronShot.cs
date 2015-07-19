@@ -11,13 +11,16 @@ public class NeutronShot : MonoBehaviour {
 
 	AudioSource source;
 
+	Vector3 startingPos;
+
 	public AudioClip launchSound;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
 		source = GetComponent<AudioSource> ();
+		startingPos = transform.position;
 		}
-	
+
 	void Update () {
 	        if (Input.GetMouseButtonDown(0)) {
 			Launch ();
@@ -35,7 +38,8 @@ public class NeutronShot : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll){
 		if (coll.gameObject.tag == "Border") {
-			Destroy(gameObject);
+			transform.position = startingPos;
+			rb.velocity = new Vector3(0,0,0);
 		}
 	}
 
